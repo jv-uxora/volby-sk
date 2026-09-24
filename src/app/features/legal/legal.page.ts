@@ -85,7 +85,7 @@ const DOCS: Record<Doc, LegalDoc> = {
       {
         h: 'Právo podať sťažnosť',
         p: [
-          'Používateľ má právo podať sťažnosť dozornému orgánu, ktorým je Úrad na ochranu osobných údajov Slovenskej republiky, Hraničná 12, 820 07 Bratislava 27 (www.dataprotection.gov.sk).',
+          'Používateľ má právo podať sťažnosť dozornému orgánu, ktorým je Úrad na ochranu osobných údajov Slovenskej republiky, Galvaniho 7/B, 821 04 Bratislava (www.dataprotection.gov.sk).',
         ],
       },
       {
