@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # keepalive commit (viď nižšie)
   pages: write
   id-token: write
 
@@ -25,10 +25,25 @@ jobs:
       PAGES_ELECTIONS_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/elections.json
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      # GitHub vypne scheduled workflows po 60 dňoch bez aktivity v repe → keď je posledný
+      # commit starší ako 45 dní, pridaj prázdny keepalive commit.
+      - name: Keepalive (proti vypnutiu cronu)
+        run: |
+          last=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          if [ $(( (now - last) / 86400 )) -ge 45 ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "chore: keepalive (cron ostáva aktívny)"
+            git push
+          fi
 
       - name: Nainštaluj pdftotext (parsovanie príloh s obcami)
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
