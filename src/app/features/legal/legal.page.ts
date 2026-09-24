@@ -16,12 +16,12 @@ interface LegalDoc {
 }
 
 const OPERATOR =
-  'Uxora s.r.o., so sídlom Novomestská 1898/5, 940 02 Nové Zámky, Slovenská republika, IČO: 57345252, DIČ: 2122672145.';
+  'Uxora s.r.o., so sídlom Novomestská 1898/5, 940 02 Nové Zámky, Slovenská republika, IČO: 57345252, DIČ: 2122672145. Zapísaná v obchodnom registri Okresného súdu Nitra, oddiel Sro, vložka č. 67933/N.';
 
 const DOCS: Record<Doc, LegalDoc> = {
   privacy: {
     title: 'Zásady ochrany súkromia',
-    effective: 'Účinné od 12. júla 2026',
+    effective: 'Účinné od 24. septembra 2026',
     intro:
       'Aplikácia Voľby SK je navrhnutá s dôrazom na minimalizáciu údajov. Nevyžaduje registráciu ani prihlásenie, nepristupuje k polohe zariadenia a neukladá osobné údaje na serveroch prevádzkovateľa. Väčšina údajov zostáva výhradne v zariadení používateľa.',
     sections: [
@@ -35,10 +35,17 @@ const DOCS: Record<Doc, LegalDoc> = {
       {
         h: 'Aké údaje sa spracúvajú',
         p: [
-          'Nastavenia aplikácie. Vybrané typy volieb, kraj, obec a pripomienky sa ukladajú výhradne lokálne v zariadení používateľa prostredníctvom lokálneho úložiska aplikácie (kľúče „volby-sk.settings" a „volby-sk.fcm-topics"). Tieto údaje sa neodosielajú prevádzkovateľovi a neopúšťajú zariadenie.',
+          'Nastavenia aplikácie. Vybrané typy volieb, kraj a obec sa ukladajú výhradne lokálne v zariadení používateľa prostredníctvom lokálneho úložiska aplikácie (kľúče „volby-sk.settings" a „volby-sk.fcm-topics"). Tieto údaje sa neodosielajú prevádzkovateľovi a neopúšťajú zariadenie.',
           'Push notifikácie. Na doručovanie upozornení sa využíva služba Firebase Cloud Messaging spoločnosti Google. Na tento účel systém zariadenia vytvorí technický identifikátor (registračný token) a aplikácia prihlási zariadenie na „témy" zodpovedajúce zvoleným typom volieb, kraju alebo obci. Spoločnosť Google ako sprostredkovateľ spracúva registračný token a zoznam tém nevyhnutných na doručenie notifikácie. Tieto údaje nie sú prepojené s menom, e-mailovou adresou ani používateľským účtom, keďže aplikácia žiadny účet nevyužíva.',
           'Upozornenie: prihlásenie na tému konkrétneho kraja alebo obce je technicky viditeľné pre poskytovateľa doručovania (Google), nie je však spojené s totožnosťou používateľa. Notifikácie možno kedykoľvek vypnúť; v takom prípade sa zariadenie z tém odhlási.',
           'Sťahovanie údajov o voľbách. Údaje o voľbách sa načítavajú ako statické súbory zo služby GitHub Pages. Ide o jednosmerné čítanie, pri ktorom sa neodosielajú žiadne osobné údaje používateľa. Poskytovateľ hostingu (GitHub) môže pri každej požiadavke spracúvať bežné technické logy, napríklad IP adresu, rovnako ako ktorýkoľvek webový server.',
+        ],
+      },
+      {
+        h: 'Údaje o osobách vo voľbách',
+        p: [
+          'Aplikácia zobrazuje mená a funkcie zvolených alebo kandidujúcich osôb (poslanci, predsedovia samosprávnych krajov, starostovia a primátori, kandidáti a prezidenti) a výsledky, ktoré dosiahli. Ide o údaje zverejnené v oficiálnych verejných zdrojoch (Štatistický úrad SR, Zbierka zákonov) a v prípade historických údajov aj na Wikipédii; neobohacujeme ich o žiadne iné údaje o týchto osobách.',
+          'Účelom je informovanie verejnosti o priebehu a výsledkoch volieb. Právnym základom je oprávnený záujem prevádzkovateľa (čl. 6 ods. 1 písm. f) GDPR) v spojení so slobodou prejavu a právom na informácie (čl. 85 GDPR). Údaje sa uchovávajú, kým sú v aplikácii zverejnené ako súčasť histórie volieb. Dotknutá osoba môže požiadať o opravu nepresného údaja alebo namietať proti spracúvaniu na juraj.vanko@uxora.sk.',
         ],
       },
       {
@@ -92,7 +99,7 @@ const DOCS: Record<Doc, LegalDoc> = {
   },
   terms: {
     title: 'Podmienky používania',
-    effective: 'Účinné od 12. júla 2026',
+    effective: 'Účinné od 24. septembra 2026',
     sections: [
       {
         h: 'Prevádzkovateľ',
@@ -107,6 +114,18 @@ const DOCS: Record<Doc, LegalDoc> = {
         p: [
           'Údaje pochádzajú z verejných zdrojov — Zbierka zákonov (Slov-lex), Štatistický úrad Slovenskej republiky (volby.statistics.sk) a Wikipédia.',
           'Prevádzkovateľ vynakladá primerané úsilie na presnosť a aktuálnosť údajov, nezaručuje však ich úplnosť ani bezchybnosť. Aplikácia nie je oficiálnym zdrojom informácií. Záväzné informácie sú dostupné na oficiálnych stránkach (minv.sk, volby.statistics.sk, slov-lex.sk).',
+        ],
+      },
+      {
+        h: 'Licencia údajov z Wikipédie',
+        p: [
+          'Časť historických výsledkov a zoznamov je prevzatá zo slovenskej Wikipédie a je dostupná na základe licencie Creative Commons Uveďte pôvod – Zachovajte licenciu 4.0 (CC BY-SA 4.0). Autori sú uvedení v histórii príslušných článkov na sk.wikipedia.org. Údaje boli upravené (zjednodušené a preformátované) pre potreby aplikácie.',
+        ],
+      },
+      {
+        h: 'Neoficiálna aplikácia',
+        p: [
+          'Aplikácia nie je spojená so žiadnym štátnym orgánom, politickou stranou ani kandidátom a nepoužíva štátne symboly.',
         ],
       },
       {
